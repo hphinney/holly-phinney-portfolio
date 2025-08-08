@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holly Phinney - SDR Portfolio | Panorama Education</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #00A651 0%, #0066CC 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .portfolio-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .profile-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .profile-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00A651 0%, #0066CC 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            font-weight: bold;
+            color: white;
+            box-shadow: 0 10px 30px rgba(0, 166, 81, 0.3);
+        }
+
+        .profile-info h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #00A651 0%, #0066CC 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .profile-info .subtitle {
+            font-size: 1.2em;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            background: rgba(0, 166, 81, 0.1);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            color: #00A651;
+            border: 1px solid rgba(0, 166, 81, 0.2);
+        }
+
+        .value-prop {
+            background: linear-gradient(135deg, #00A651 0%, #0066CC 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            font-size: 1.1em;
+            text-align: center;
+            margin-top: 20px;
+            box-shadow: 0 10px 30px rgba(0, 166, 81, 0.3);
+        }
+
+        .sections-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .section-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .section-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-right: 15px;
+            background: linear-gradient(135deg, #00A651 0%, #0066CC 100%);
+            color: white;
+            box-shadow: 0 5px 15px rgba(0, 166, 81, 0.3);
+        }
+
+        .section-title {
+            font-size: 1.4em;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        .metric-item {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 166, 81, 0.05);
+            border-radius: 12px;
+            border: 1px solid rgba(0, 166, 81, 0.1);
+        }
+
+        .metric-number {
+            font-size: 2em;
+            font-weight: bold;
+            background: linear-gradient(135deg, #00A651 0%, #0066CC 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+        }
+
+        .metric-label {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .skill-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .skill-item {
+            background: rgba(0, 166, 81, 0.05);
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #00A651;
+            transition: all 0.3s ease;
+        }
+
+        .skill-item:hover {
+            background: rgba(0, 166, 81, 0.1);
+            transform: translateX(5px);
+        }
+
+        .timeline-item {
+            border-left: 3px solid #00A651;
+            padding-left: 20px;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 0;
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            background: #00A651;
+        }
+
+        .timeline-date {
+            color: #00A651;
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+
+        .timeline-title {
+            font-weight: 600;
+            margin: 5px 0;
+            color: #333;
+        }
+
+        .timeline-desc {
+            color: #666;
+            font-size: 0.95em;
+        }
+
+        .achievement-list {
+            list-style: none;
+        }
+
+        .achievement-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(0, 166, 81, 0.1);
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .achievement-list li::before {
+            content: '🎯';
+            position: absolute;
+            left: 0;
+            top: 10px;
+        }
+
+        .achievement-list li:last-child {
+            border-bottom: none;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #00A651 0%, #0066CC 100%);
+            color: white;
+            text-align: center;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .cta-section h2 {
+            margin-bottom: 15px;
+            font-size: 2em;
+        }
+
+        .cta-section p {
+            font-size: 1.1em;
+            opacity: 0.9;
+            margin-bottom: 25px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .cta-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .profile-section {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .sections-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skill-list {
+                grid-template-columns: 1fr;
+            }
+
+            .metrics-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <div class="portfolio-header">
+            <div class="profile-section">
+                <div class="profile-avatar">HP</div>
+                <div class="profile-info">
+                    <h1>Holly Phinney</h1>
+                    <div class="subtitle">Sales Development Representative Candidate</div>
+                    <div class="subtitle">Educator → Sales Development Specialist</div>
+                </div>
+            </div>
+            
+            <div class="contact-info">
+                <div class="contact-item">📍 Austin, TX</div>
+                <div class="contact-item">📞 254-913-8845</div>
+                <div class="contact-item">✉️ <a href="mailto:hollyphinney@gmail.com" style="color: inherit; text-decoration: none;">hollyphinney@gmail.com</a></div>
+                <div class="contact-item">💼 <a href="https://linkedin.com/in/holly-phinney" target="_blank" style="color: inherit; text-decoration: none;">LinkedIn: holly-phinney</a></div>
+            </div>
+
+            <div class="value-prop">
+                <strong>"I don't just sell TO educators - I AM one."</strong><br>
+                Combining 10+ years of K-12 education expertise with proven sales development success to drive authentic conversations that convert prospects into Panorama champions.
+            </div>
+        </div>
+
+        <!-- Sections Grid -->
+        <div class="sections-grid">
+            <!-- Performance Metrics -->
+            <div class="section-card">
+                <div class="section-header">
+                    <div class="section-icon">📊</div>
+                    <div class="section-title">Performance Metrics</div>
+                </div>
+                <div class="metrics-grid">
+                    <div class="metric-item">
+                        <span class="metric-number">90%+</span>
+                        <div class="metric-label">Meeting Acceptance Rate</div>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-number">70+</span>
+                        <div class="metric-label">Daily Activities</div>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-number">$500K+</span>
+                        <div class="metric-label">Renewals Generated</div>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-number">18%</span>
+                        <div class="metric-label">Email Response Rate</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Education Expertise -->
+            <div class="section-card">
+                <div class="section-header">
+                    <div class="section-icon">🎓</div>
+                    <div class="section-title">Education Expertise</div>
+                </div>
+                <div class="skill-list">
+                    <div class="skill-item">
+                        <strong>MTSS Implementation</strong><br>
+                        <small>Multi-Tiered Systems of Support</small>
+                    </div>
+                    <div class="skill-item">
+                        <strong>SEL Program Development</strong><br>
+                        <small>Social-Emotional Learning</small>
+                    </div>
+                    <div class="skill-item">
+                        <strong>IEP & Behavior Planning</strong><br>
+                        <small>Individual Education Programs</small>
+                    </div>
+                    <div class="skill-item">
+                        <strong>District Stakeholder Mapping</strong><br>
+                        <small>Superintendents to Teachers</small>
+                    </div>
+                    <div class="skill-item">
+                        <strong>Budget Cycle Knowledge</strong><br>
+                        <small>Education Procurement</small>
+                    </div>
+                    <div class="skill-item">
+                        <strong>Compliance Requirements</strong><br>
+                        <small>IDEA, ESSA, State Standards</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sales Development Skills -->
+            <div class="section-card">
+                <div class="section-header">
+                    <div class="section-icon">🎯</div>
+                    <div class="section-title">Sales Development Skills</div>
+                </div>
+                <div class="skill-list">
+                    <div class="skill-item">
+                        <strong>Salesforce CRM</strong><br>
+                        <small>Advanced user - 3+ years</small>
+                    </div>
+                    <div class="skill-item">
+                        <strong>Strategic Prospecting</strong><br>
+                        <small>Multi-channel outreach</small>
+                    </div>
+                    <div class="skill-item">
+                        <strong>Pipeline Management</strong><br>
+                        <small>200+ prospect tracking</small>
+                    </div>
+                    <div class="skill-item">
+                        <strong>Consultative Selling</strong><br>
+                        <small>Needs discovery & solution fit</small>
+                    </div>
+                    <div class="skill-item">
+                        <strong>Multi-Stakeholder Engagement</strong><br>
+                        <small>Complex decision networks</small>
+                    </div>
+                    <div class="skill-item">
+                        <strong>Objection Handling</strong><br>
+                        <small>Education-specific concerns</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Professional Journey -->
+            <div class="section-card">
+                <div class="section-header">
+                    <div class="section-icon">🚀</div>
+                    <div class="section-title">Professional Journey</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2021 - Present</div>
+                    <div class="timeline-title">Training & Client Engagement Specialist</div>
+                    <div class="timeline-desc">STAR Autism Support - Serving K-12 districts across North America with curriculum implementation and professional development</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2016 - 2021</div>
+                    <div class="timeline-title">Behavior Support Teacher & Department Chair</div>
+                    <div class="timeline-desc">Eanes Elementary School - Led 20-member staff, implemented district-wide SEL programs, nominated for Teacher of the Year (2018)</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2015 - 2016</div>
+                    <div class="timeline-title">Fourth Grade Inclusion Teacher</div>
+                    <div class="timeline-desc">Lake Travis School District - Specialized in individualized instruction and curriculum development</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2012 - 2014</div>
+                    <div class="timeline-title">Life Skills Teacher</div>
+                    <div class="timeline-desc">Austin ISD - Managed paraprofessionals, developed IEPs, built community partnerships</div>
+                </div>
+            </div>
+
+            <!-- Key Achievements -->
+            <div class="section-card">
+                <div class="section-header">
+                    <div class="section-icon">🏆</div>
+                    <div class="section-title">Key Achievements</div>
+                </div>
+                <ul class="achievement-list">
+                    <li><strong>Nominated for Teacher of the Year (2018)</strong> - Recognized for exceptional student outcomes and program innovation</li>
+                    <li><strong>$500K+ Annual Renewals Generated</strong> - Through strategic relationship building and consultative approach</li>
+                    <li><strong>90%+ Meeting Acceptance Rate</strong> - Highest in team due to education credibility and personalized outreach</li>
+                    <li><strong>District-Wide SEL Implementation</strong> - Led campus-wide social-emotional learning program at Eanes ISD</li>
+                    <li><strong>20-Member Team Leadership</strong> - Managed cross-functional staff supporting special education initiatives</li>
+                    <li><strong>Master's Degree - Special Education</strong> - Texas Tech University, Magna Cum Laude undergraduate</li>
+                </ul>
+            </div>
+
+            <!-- Panorama Alignment -->
+            <div class="section-card">
+                <div class="section-header">
+                    <div class="section-icon">🎯</div>
+                    <div class="section-title">Why Panorama Education?</div>
+                </div>
+                <div style="space-y: 15px;">
+                    <p><strong>Mission Alignment:</strong> Genuine passion for improving student outcomes through data-driven insights - it's not just a job, it's my calling.</p>
+                    
+                    <p><strong>Market Understanding:</strong> Deep knowledge of K-12 stakeholders, budget cycles, and compliance requirements gives me instant credibility.</p>
+                    
+                    <p><strong>Proven Results:</strong> Track record of building authentic relationships with education leaders and driving measurable business outcomes.</p>
+                    
+                    <p><strong>Scalable Impact:</strong> Ready to leverage my education expertise to help Panorama reach more districts and improve outcomes for millions of students.</p>
+                    
+                    <p><strong>Texas Opportunity:</strong> Well-positioned to maximize the Texas Education Exchange partnership and state-specific growth initiatives.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="cta-section">
+            <h2>Ready to Drive Results for Panorama</h2>
+            <p>Combining authentic education expertise with proven sales development success to scale student impact across districts nationwide.</p>
+            <a href="mailto:hollyphinney@gmail.com" class="cta-button">Let's Connect</a>
+        </div>
+    </div>
+
+    <script>
+        // Add some interactive effects
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scroll for any internal links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Add floating animation to cards
+            const cards = document.querySelectorAll('.section-card');
+            cards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.1}s`;
+                card.style.animation = 'fadeInUp 0.6s ease forwards';
+            });
+        });
+
+        // CSS animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
